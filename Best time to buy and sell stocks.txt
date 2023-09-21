@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int buyprice = prices[0]; //minimum prices in which we'll buy
+        int maxprofit = 0; //final maximum profit
+        int profits =0; //all the profits
+
+        for(int i =0; i<prices.size();i++){
+
+        buyprice = min(buyprice, prices[i]); // we keep storing the minimum price to buy as we  move forward
+        profits = prices[i]-buyprice;  //we subtract every price with minimum or buyprice       find the profit
+
+        maxprofit = max(maxprofit,profits); //we compare all the profits to get the maximum profit
+
+        }
+        return maxprofit;
+        
+    }
+};
