@@ -8,3 +8,29 @@ public:
         
     }
 };
+
+
+
+**Problem Statement**: We are given an array of integers, `nums`, and an integer `k`. We need to rotate the array to the right by `k` steps.
+
+**Solution Overview**: The solution uses a technique known as "array reversal" to perform the rotation in-place. Here's how it works:
+
+1. **Calculate Effective Rotation Amount**: To handle cases where `k` is greater than the size of the array, we calculate the effective rotation amount by taking the modulus (`%`) of `k` with the size of the array. This ensures that we don't perform unnecessary rotations.
+
+2. **Reverse the Entire Array**: Initially, we reverse the entire `nums` array. Reversing the entire array effectively rotates it by `nums.size()` steps to the right, which is equivalent to rotating it back to its original position. This step is done to prepare the array for further rotations.
+
+3. **Reverse the First `k` Elements**: After reversing the entire array, we reverse the first `k` elements of the array. This step effectively rotates the first `k` elements to the end of the array. Now, the first `k` elements are in their correct positions.
+
+4. **Reverse the Remaining Elements**: Finally, we reverse the remaining elements of the array, which are the elements from index `k` to the end. This step effectively rotates these elements to the beginning of the array.
+
+By following these three reversal operations, the entire array `nums` will be rotated to the right by `k` steps, as required by the problem.
+
+**Example**: Let's say we have `nums = [1, 2, 3, 4, 5]` and `k = 2`. After applying the three reversal operations step by step:
+
+- Reverse the entire array: `nums` becomes `[5, 4, 3, 2, 1]`.
+- Reverse the first `k` elements (`k = 2`): `nums` becomes `[4, 5, 3, 2, 1]`.
+- Reverse the remaining elements: `nums` becomes `[4, 5, 1, 2, 3]`.
+
+The array `nums` is now rotated to the right by 2 steps, as required: `[1, 2, 3, 4, 5]` ➡️ `[4, 5, 1, 2, 3]`.
+
+This solution is efficient because it performs the rotation in-place, meaning it doesn't require additional memory or a new array to store the rotated elements.
