@@ -1,0 +1,34 @@
+class RandomizedSet {
+    vector<int> v;
+    unordered_map<int, int> mp;
+public:
+    RandomizedSet() {
+        srand(time(0)); // Initialize random number generator
+    }
+    
+    bool insert(int val) {
+        if(mp.find(val) != mp.end())
+            return false;
+
+        v.push_back(val);
+        mp[val] = v.size() - 1;
+        return true;
+    }
+    
+    bool remove(int val) {
+        if(mp.find(val) == mp.end())
+            return false;
+
+        int index = mp[val];
+        mp[v.back()] = index;
+        v[index] = v.back();
+        v.pop_back();
+        mp.erase(val);
+        return true;
+    }
+    
+    int getRandom() {
+        int randomIndex = rand() % v.size();
+        return v[randomIndex];
+    }
+};

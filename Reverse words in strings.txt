@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> temp;
+        string ans="";
+        stringstream ss(s);
+        string words;
+
+        while(ss>>words)
+        {
+            temp.push_back(words);
+        }
+        for(int i=temp.size()-1; i>-1;i--)
+        {
+            if(i!=0)
+            ans += temp[i]+" ";
+
+            else
+            ans+= temp[i];
+        }
+        return ans;
+        
+    }
+};
